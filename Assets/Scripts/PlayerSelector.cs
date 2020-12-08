@@ -5,22 +5,20 @@ using UnityEngine.UI;
 
 public class PlayerSelector : MonoBehaviour
 {
-    public GameObject[] changeCharacter;
-    public GameObject[] characters;
+    public GameObject[] changeCharacter; //Arreglo de previsualización de personajes con sus características
+    public GameObject[] characters; //Prefabs de los personajes que se crearán
 
     private int index = 0;
+    
     void Start()
     {
-
+        //Todos los objetos de desactivan de pantalla
         foreach(GameObject obj in changeCharacter)
         {
             obj.SetActive(false);
         }
         
-        /*if (changeCharacter[index])
-        {
-            changeCharacter[index].SetActive(true);
-        }*/
+        
         Select(index);
     }
 
@@ -47,14 +45,15 @@ public class PlayerSelector : MonoBehaviour
         
     }
 
+    //El objecto que se selecciona aparece en pantalla
     public void Select(int i)
     {
         foreach (GameObject obj in changeCharacter)
         {
             obj.SetActive(false); 
         }
-        //changeCharacter[i].SetActive(true);
+        
         changeCharacter[i].gameObject.SetActive(true);
-        PlayerStorage.playerPrefab = characters[i];
+        PlayerStorage.playerPrefab = characters[i]; //Instancia el prefab que será creado para la escena principal
     }
 }
